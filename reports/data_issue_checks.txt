@@ -1,0 +1,151 @@
+1. LEAKAGE: receipt is created after payment
+Absent from holdout: ['fare_paid_receipt_rs', 'fare_rs']
+                      fare_paid_receipt_rs  fare_rs
+fare_paid_receipt_rs                1.0000   0.9988
+fare_rs                             0.9988   1.0000
+
+2. UNIT MIXUP: compare zones before any conversion
+             distance_km              wait_min                passengers            hour            luggage_bags            fuel_price_rs                
+                     min median   max      min median     max        min median max  min median max          min median max           min  median     max
+zone                                                                                                                                                     
+Market               1.1   11.9  25.0      0.3   15.2    29.9          1    2.0   4    5   13.0  23           -1    2.0   4         90.00  99.875  110.00
+Outskirts            1.1   13.3  24.8      0.2   13.1    30.0          1    2.0   4    5   14.0  23           -1    2.0   4         90.21  99.870  109.82
+Station Area         1.0   12.1  24.9      6.0  903.0  1800.0          1    2.0   4    5   13.0  23           -1    2.0   4         90.01  99.545  110.00
+Station Area wait_min / 60 (seconds to minutes):
+count    476.000000
+mean      14.935714
+std        8.584252
+min        0.100000
+25%        7.800000
+50%       15.050000
+75%       22.700000
+max       30.000000
+Name: wait_min, dtype: float64
+
+3. SENTINELS: inspect repeated extreme values
+distance_km lowest values: {1.0: 1, 1.1: 8, 1.2: 4} highest values: {24.8: 5, 24.9: 4, 25.0: 2}
+wait_min lowest values: {0.2: 1, 0.3: 1, 0.4: 1} highest values: {1788.0: 2, 1794.0: 1, 1800.0: 1}
+passengers lowest values: {1: 179, 2: 343, 3: 315} highest values: {2: 343, 3: 315, 4: 163}
+hour lowest values: {5: 35, 6: 48, 7: 56} highest values: {21: 51, 22: 60, 23: 22}
+luggage_bags lowest values: {-1: 55, 0: 113, 1: 257} highest values: {2: 226, 3: 229, 4: 120}
+fuel_price_rs lowest values: {90.0: 1, 90.01: 1, 90.04: 1} highest values: {109.95: 1, 109.96: 1, 110.0: 2}
+Invalid luggage_bags = -1 count: 55
+
+4. DUPLICATES: extra complete-row copies
+0
+
+5. STUCK SENSOR: longest unchanged observations by date
+distance_km
+ value  rows      start        end  span_days
+   4.0     2 2026-02-24 2026-02-25          1
+   7.0     2 2026-02-15 2026-02-15          0
+  10.8     2 2026-02-24 2026-02-24          0
+wait_min
+ value  rows      start        end  span_days
+   5.5     2 2026-02-09 2026-02-10          1
+  27.0     1 2026-01-01 2026-01-01          0
+1680.0     1 2026-01-01 2026-01-01          0
+passengers
+ value  rows      start        end  span_days
+     3     4 2026-05-25 2026-05-27          2
+     2     6 2026-03-03 2026-03-04          1
+     3     6 2026-04-04 2026-04-05          1
+hour
+ value  rows      start        end  span_days
+    18     3 2026-03-24 2026-03-25          1
+    10     2 2026-01-03 2026-01-04          1
+    19     2 2026-01-31 2026-02-01          1
+luggage_bags
+ value  rows      start        end  span_days
+     3     5 2026-04-01 2026-04-02          1
+     1     4 2026-01-27 2026-01-28          1
+     0     4 2026-02-22 2026-02-23          1
+fuel_price_rs
+ value  rows      start        end  span_days
+ 94.70     2 2026-03-18 2026-03-18          0
+ 99.25     1 2026-01-01 2026-01-01          0
+103.75     1 2026-01-01 2026-01-01          0
+fare_paid_receipt_rs
+ value  rows      start        end  span_days
+   180     2 2026-02-17 2026-02-17          0
+   181     2 2026-02-17 2026-02-17          0
+   181     2 2026-02-19 2026-02-19          0
+fare_rs
+ value  rows      start        end  span_days
+   205     2 2026-05-11 2026-05-12          1
+   233     2 2026-06-25 2026-06-25          0
+   115     1 2026-01-01 2026-01-01          0
+
+6. TARGET TYPOS: inspect upper tail for isolated tenfold values
+count    1000.000000
+mean      192.130000
+std        60.658854
+min        38.000000
+25%       145.000000
+50%       187.000000
+75%       234.000000
+max       386.000000
+386
+370
+365
+355
+353
+352
+344
+344
+344
+343
+340
+339
+333
+331
+331
+331
+330
+325
+324
+324
+Largest adjacent target ratios:
+1.214286
+1.185185
+1.078947
+1.075758
+1.058824
+
+7. SPELLING VARIANTS: raw values versus clean reference
+booking train:
+booking
+'street'     321
+'app'        271
+'stand'      258
+'stand '      15
+'str.'        14
+'STREET'      12
+'street '     12
+'Stand'       11
+'Street'      11
+'app '        11
+'sta.'         9
+'STAND'        9
+'App'          9
+'app.'         8
+'APP'          8
+' app'         8
+' street'      7
+' stand'       6
+booking later:
+booking
+'street'    118
+'stand'      93
+'app'        89
+zone train:
+zone
+'Station Area'    476
+'Market'          268
+'Outskirts'       256
+zone later:
+zone
+'Station Area'    120
+'Market'          108
+'Outskirts'        72
+Clean booking levels: 3

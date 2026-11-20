@@ -1,0 +1,77 @@
+Original train SHA-256:
+e0fba4e5351fdad0c1fdd87f89ca174c2d7e73e4032b07ce3b669b027ba9c03b
+
+Rows and columns: (1000, 12)
+
+Column types:
+record_id                   str
+date                        str
+distance_km             float64
+wait_min                float64
+passengers                int64
+hour                      int64
+luggage_bags              int64
+fuel_price_rs           float64
+booking                     str
+zone                        str
+fare_paid_receipt_rs      int64
+fare_rs                   int64
+dtype: object
+
+Missing values:
+record_id               0
+date                    0
+distance_km             0
+wait_min                0
+passengers              0
+hour                    0
+luggage_bags            0
+fuel_price_rs           0
+booking                 0
+zone                    0
+fare_paid_receipt_rs    0
+fare_rs                 0
+dtype: int64
+
+Extra duplicate rows: 0
+
+Columns absent from holdout:
+['fare_paid_receipt_rs', 'fare_rs']
+
+Numeric summary:
+       distance_km     wait_min   passengers         hour  luggage_bags  fuel_price_rs  fare_paid_receipt_rs      fare_rs
+count  1000.000000  1000.000000  1000.000000  1000.000000   1000.000000    1000.000000           1000.000000  1000.000000
+mean     12.405400   434.224600     2.462000    13.697000      1.821000      99.806340            192.160000   192.130000
+std       6.955003   565.854939     0.966173     5.220579      1.372167       5.773607             60.795942    60.658854
+min       1.000000     0.200000     1.000000     5.000000     -1.000000      90.000000             35.000000    38.000000
+25%       6.300000    13.275000     2.000000     9.000000      1.000000      94.707500            146.000000   145.000000
+50%      12.400000    28.100000     2.000000    13.000000      2.000000      99.695000            188.000000   187.000000
+75%      18.400000   853.500000     3.000000    18.000000      3.000000     104.710000            235.000000   234.000000
+max      25.000000  1800.000000     4.000000    23.000000      4.000000     110.000000            388.000000   386.000000
+
+Exact category counts for booking:
+booking
+'street'     321
+'app'        271
+'stand'      258
+'stand '      15
+'str.'        14
+'STREET'      12
+'street '     12
+'Stand'       11
+'Street'      11
+'app '        11
+'sta.'         9
+'STAND'        9
+'App'          9
+'app.'         8
+'APP'          8
+' app'         8
+' street'      7
+' stand'       6
+
+Exact category counts for zone:
+zone
+'Station Area'    476
+'Market'          268
+'Outskirts'       256

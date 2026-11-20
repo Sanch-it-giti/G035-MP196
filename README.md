@@ -27,4 +27,21 @@ Do not edit these original files.
 
 - Public GitHub repository created.
 - DVC initialized and original datasets tracked.
-- Data investigation in progress.
+- Stage 1 data investigation saved in `src/check_data_issues.py`.
+- Data findings recorded in `reports/findings.yaml`.
+
+## Reproduce the data investigation
+
+From the repository root, with the Python environment activated:
+
+```bash
+python src/inspect_data.py > reports/initial_inspection.txt
+python src/check_data_issues.py > reports/data_issue_checks.txt
+```
+
+The scripts read the original files without changing them. The receipt field
+leaks information available after payment. Station Area waiting times use
+seconds (divide by 60 to obtain minutes). Negative bag counts represent missing
+values, and booking names have spelling variants. The checks found no exact
+duplicate rows, prolonged stuck readings, or isolated tenfold target values.
+Cleaning and model training are the next stage.
