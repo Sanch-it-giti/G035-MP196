@@ -45,3 +45,16 @@ seconds (divide by 60 to obtain minutes). Negative bag counts represent missing
 values, and booking names have spelling variants. The checks found no exact
 duplicate rows, prolonged stuck readings, or isolated tenfold target values.
 Cleaning and model training are the next stage.
+
+## Prepare cleaned data
+
+```bash
+python -m pip install -r requirements.txt
+python -m src.fare_data.prepare
+python -m unittest discover -s tests -v
+```
+
+Settings are read from `params.yaml`. Generated data is in `data/processed/`
+(ignored by Git); `reports/cleaning_summary.json` records counts and hashes.
+The numeric missing values must be imputed inside the model's training pipeline.
+See [TEAM_HANDOFF.md](TEAM_HANDOFF.md) for setup, data access and remaining roles.

@@ -1,0 +1,46 @@
+{
+  "raw_sha256": {
+    "train": "e0fba4e5351fdad0c1fdd87f89ca174c2d7e73e4032b07ce3b669b027ba9c03b",
+    "later": "3c894f3f23fffe1ad9a998c8b1d96504dc14895798bdccca0492c531f69578b8",
+    "holdout": "38778c96bb25fe58e71544a7830adb7485b8d19e272048b42171e6acc37a44db"
+  },
+  "datasets": {
+    "train": {
+      "input_rows": 1000,
+      "output_rows": 1000,
+      "missing_luggage": 55,
+      "booking_levels": [
+        "app",
+        "stand",
+        "street"
+      ],
+      "receipt_removed": true,
+      "wait_conversion_rows": 476
+    },
+    "later": {
+      "input_rows": 300,
+      "output_rows": 300,
+      "missing_luggage": 0,
+      "booking_levels": [
+        "app",
+        "stand",
+        "street"
+      ],
+      "receipt_removed": true,
+      "wait_conversion_rows": 0
+    },
+    "holdout": {
+      "input_rows": 250,
+      "output_rows": 250,
+      "missing_luggage": 0,
+      "booking_levels": [
+        "app",
+        "stand",
+        "street"
+      ],
+      "receipt_removed": true,
+      "wait_conversion_rows": 0
+    }
+  },
+  "raw_files_unchanged": true
+}

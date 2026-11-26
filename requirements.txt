@@ -1,0 +1,4 @@
+# Data-stage dependencies; other owners must append pinned dependencies as needed.
+pandas==3.1.1
+PyYAML==6.0.3
+dvc==3.67.1

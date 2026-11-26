@@ -1,0 +1,9 @@
+data:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  report_path: reports/cleaning_summary.json
+  train_sha256: e0fba4e5351fdad0c1fdd87f89ca174c2d7e73e4032b07ce3b669b027ba9c03b
+cleaning:
+  unit_group: Station Area
+  wait_divisor: 60
+  luggage_sentinel: -1
